@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem name="Abscence" id="abscence_main_menu"/>
+    <menuitem name="Etudiant" id="abscence_etudiant_menu" parent="abscence_main_menu" action="action_etudiant_list"/>
+        <!-- Action for List View -->
+    <record id="action_etudiant_list" model="ir.actions.act_window">
+        <field name="name">Etudiants</field>
+        <field name="res_model">abscence.etudiant</field>
+        <field name="view_mode">tree,form,kanban</field>
+    </record>
+    <!-- Form View -->
+    <record id="view_etudiant_form" model="ir.ui.view">
+        <field name="name">etudiant.form</field>
+        <field name="model">abscence.etudiant</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="nom"/>
+                        <field name="prenom"/>
+                        <field name="email"/>
+                        <field name="password"/>
+                        <field name="tele"/>
+                        <field name="cin"/>
+                        <field name="filiere_id"/>
+                        <!-- <field name="matieres" widget="many2many_tags"/> -->
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- List View -->
+    <record id="view_etudiant_tree" model="ir.ui.view">
+        <field name="name">etudiant.tree</field>
+        <field name="model">abscence.etudiant</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="nom"/>
+                <field name="prenom"/>
+                <field name="email"/>
+                <field name="tele"/>
+                <field name="cin"/>
+                <field name="filiere_id"/>
+                <field name="temp"/>
+                
+                <!-- <field name="matieres" widget="many2many_tags"/> -->
+            </tree>
+        </field>
+    </record>
+
+    <!-- Kanban View -->
+    <record id="view_etudiant_kanban" model="ir.ui.view">
+        <field name="name">etudiant.kanban</field>
+        <field name="model">abscence.etudiant</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click">
+                            <div class="oe_kanban_card">
+                                <div class="oe_kanban_card_header">
+                                    <field name="nom"/>
+                                </div>
+                                <div class="oe_kanban_card_content">
+                                    <field name="prenom"/>
+                                    <field name="email"/>
+                                    <field name="tele"/>
+                                    <field name="cin"/>
+                                    <field name="filiere_id"/>
+                                    <!-- <field name="matieres" widget="many2many_tags"/> -->
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+</odoo>
