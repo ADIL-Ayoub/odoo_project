@@ -10,10 +10,16 @@ class Attendance(models.Model):
     professor_id = fields.Many2one(
         'abscence.professeur', string='Professeur')
     subject_ids = fields.Many2many(
-        'abscence.matiere', string='Matieres', compute="_compute_subjects")
+        'abscence.matiere', string='Matieres', store=True, group_operator="count"
+        # , compute="_compute_subjects"
+    )
+    etudiants_ids = fields.Many2many(
+        'abscence.etudiant', string='Etudiants', store=True
+        # , compute="_compute_etudiants"
+    )
 
-    @api.depends('professor_id')
-    def _compute_subjects(self):
+    @ api.onchange('professor_id')
+    def onchange_professor_id(self):
         """
         Compute the subjects related to the selected professor.
         """
@@ -25,16 +31,25 @@ class Attendance(models.Model):
                 # Clear the subjects if no professor is selected
                 record.subject_ids = [(5, 0, 0)]
 
-            # if record.professor_id:
-            #     # Set the domain for the product_id field based on the selected customer
-            #     domain = [('id', 'in', record.professor_id.matieres)]
-            #     # Retrieve the first product related to the customer (if any)
-            #     first_subject = record.professor_id.matieres[:1]
-            #     # Set the product_id field with the first product (if any)
-            #     record.subject_ids = first_subject
-            #     # Set the domain for the product_id field
-            #     record.fields_get(['subject_ids'])[
-            #         'subject_ids']['domain'] = domain
-            # else:
-            #     # Clear the product_id if no customer is selected
-            #     record.subject_ids = False
+    @ api.onchange('subject_ids')
+    def onchange_subject_ids(self):
+        """
+        Compute the subjects related to the selected professor.
+        """
+        for record in self:
+            if record.subject_ids:
+                for sub in record.subject_ids:
+                    record.etudiants_ids = sub.filiere_id.etudiants
+            else:
+                # Clear the subjects if no professor is selected
+                record.etudiants_ids = [(5, 0, 0)]
+
+
+# for record in self:
+#             if record.subject_ids:
+#                 for sub in record.subject_ids:
+
+#                     students = sub.filiere_id.etudiants
+#                     for student in students:
+#                         if student not in self.etudiants_ids.ids:
+#                             self.etudiants_ids = [(4, student, 0)]

@@ -10,3 +10,5 @@ class Matiere(models.Model):
     professeur_id = fields.Many2one(
         'abscence.professeur', string='Professeur')
     filiere_id = fields.Many2one('abscence.filiere', string='Filière')
+    # attendances = fields.Many2many(
+    #     'abscence.attendance', 'subject_ids', string='Attendance')
