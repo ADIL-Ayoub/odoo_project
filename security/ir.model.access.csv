@@ -1,6 +1,10 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_absence_professeur,access.absence.professeur,model_abscence_professeur,,1,1,1,1
-access_absence_etudiant,access.absence.etudiant,model_abscence_etudiant,,1,1,1,1
-access_absence_filiere,access.absence.filiere,model_abscence_filiere,,1,1,1,1
-access_absence_matiere,access.absence.matiere,model_abscence_matiere,,1,1,1,1
-access_absence_attendance,access.absence.attendance,model_abscence_attendance,,1,1,1,1
+access_absence_professeur_admin,access.absence.professeur_admin,model_abscence_professeur,group_Admin,1,1,1,1
+access_absence_professeur_prof,access.absence.professeur_prof,model_abscence_professeur,group_Professeur,1,0,0,0
+access_absence_etudiant_admin,access.absence.etudiant_admin,model_abscence_etudiant,group_Admin,1,1,1,1
+access_absence_etudiant_prof,access.absence.etudiant_prof,model_abscence_etudiant,group_Professeur,1,0,0,0
+access_absence_filiere,access.absence.filiere,model_abscence_filiere,group_Admin,1,1,1,1
+access_absence_matiere_admin,access.absence.matiere_admin,model_abscence_matiere,group_Admin,1,1,1,1
+access_absence_matiere_prof,access.absence.matiere_prof,model_abscence_matiere,group_Professeur,1,0,0,0
+access_absence_attendance_admin,access.absence.attendance_admin,model_abscence_attendance,group_Admin,1,1,1,1
+access_absence_attendance_prof,access.absence.attendance_prof,model_abscence_attendance,group_Professeur,1,1,1,1

@@ -5,7 +5,6 @@ class Professeur(models.Model):
     _name = 'abscence.professeur'
     _description = 'Classe pour gérer les professeurs'
     _rec_name = 'nom'
-
     nom = fields.Char(string='Nom', required=True)
     prenom = fields.Char(string='Prénom', required=True)
     email = fields.Char(string='Email', required=True)
@@ -14,3 +13,4 @@ class Professeur(models.Model):
     cin = fields.Char(string='CIN', required=True)
     matieres = fields.One2many(
         'abscence.matiere', 'professeur_id', string='Matieres')
+    

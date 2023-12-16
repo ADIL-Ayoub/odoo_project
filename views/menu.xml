@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <data>
+    <!-- <data>
         <!-- This Menu Item will appear in the Upper bar, That's why It needs NO parent or action -->
         <menuitem id="wedding_organizer_menu_root"
                   name="WEDDING ORGANIZER"
@@ -17,5 +17,5 @@
                   name="Partner"
                   parent="wedding_organizer_menu_root"
                   sequence="13"/>
-    </data>
+    </data> -->
 </odoo>

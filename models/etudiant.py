@@ -1,5 +1,7 @@
 from odoo import api, models, fields
-
+import csv
+import base64
+from io import StringIO
 
 class Etudiant(models.Model):
     _name = 'abscence.etudiant'
@@ -13,8 +15,9 @@ class Etudiant(models.Model):
     tele = fields.Char(string='Téléphone')
     cin = fields.Char(string='CIN', required=True)
     filiere_id = fields.Many2one('abscence.filiere', string='Filière')
-    temp = fields.Char(string='temp',
-                       compute='_compute_nom_prenom', store=True)
+    # attendance_id= fields.Many2one('abscence.attendance',string="Attendances ")
+    # temp = fields.Char(string='temp',
+    #                    compute='_compute_temp', store=True)
 
     # matieres = fields.Many2many('abscence.matiere', string='Matieres')
 
@@ -27,7 +30,9 @@ class Etudiant(models.Model):
         for record in self:
             record.nom_prenom = f"{record.nom} {record.prenom}"
 
-    @api.depends('nom', 'prenom')
-    def _compute_nom_prenom(self):
-        for record in self:
-            record.temp = f"{self.env.user.email}"
+    # @api.depends('nom', 'prenom')
+    # def _compute_temp(self):
+    #     for record in self:
+    #         record.temp = f"{self.env.user.email}"
+
+   
