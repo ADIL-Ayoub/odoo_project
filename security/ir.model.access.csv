@@ -3,7 +3,8 @@ access_absence_professeur_admin,access.absence.professeur_admin,model_abscence_p
 access_absence_professeur_prof,access.absence.professeur_prof,model_abscence_professeur,group_Professeur,1,0,0,0
 access_absence_etudiant_admin,access.absence.etudiant_admin,model_abscence_etudiant,group_Admin,1,1,1,1
 access_absence_etudiant_prof,access.absence.etudiant_prof,model_abscence_etudiant,group_Professeur,1,0,0,0
-access_absence_filiere,access.absence.filiere,model_abscence_filiere,group_Admin,1,1,1,1
+access_absence_filiere_admin,access.absence.filiere.admin,model_abscence_filiere,group_Admin,1,1,1,1
+access_absence_filiere_prof,access.absence.filiere_prof,model_abscence_filiere,group_Professeur,1,0,0,0
 access_absence_matiere_admin,access.absence.matiere_admin,model_abscence_matiere,group_Admin,1,1,1,1
 access_absence_matiere_prof,access.absence.matiere_prof,model_abscence_matiere,group_Professeur,1,0,0,0
 access_absence_attendance_admin,access.absence.attendance_admin,model_abscence_attendance,group_Admin,1,1,1,1

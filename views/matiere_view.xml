@@ -45,6 +45,22 @@
             </field>
         </record>
 
+        <record id="view_matiere_search" model="ir.ui.view">
+            <field name="name">matiere.search</field>
+            <field name="model">abscence.matiere</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="libelle"/>
+                    <field name="professeur_id"/>
+                    <field name="filiere_id"/>
+                    <group expand="0" string="Group By" >
+                        <filter string="Professeur" name="group_by_professeur" context="{'group_by': 'professeur_id'}"/>
+                        <filter string="Filiere" name="group_by_filiere" context="{'group_by': 'filiere_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
         <!-- Kanban View -->
         <record id="view_matiere_kanban" model="ir.ui.view">
             <field name="name">matiere.kanban</field>

@@ -15,7 +15,9 @@ class Etudiant(models.Model):
     tele = fields.Char(string='Téléphone')
     cin = fields.Char(string='CIN', required=True)
     filiere_id = fields.Many2one('abscence.filiere', string='Filière')
-    # attendance_id= fields.Many2one('abscence.attendance',string="Attendances ")
+    # attendances = fields.Many2many(
+    #     'abscence.attendance', 'etudiant_ids', string='Attendance')
+
     # temp = fields.Char(string='temp',
     #                    compute='_compute_temp', store=True)
 
@@ -34,5 +36,3 @@ class Etudiant(models.Model):
     # def _compute_temp(self):
     #     for record in self:
     #         record.temp = f"{self.env.user.email}"
-
-   

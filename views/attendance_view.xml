@@ -3,7 +3,7 @@
 <record id="action_attendance_form" model="ir.actions.act_window">
         <field name="name">Attendance</field>
         <field name="res_model">abscence.attendance</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">tree,form,kanban</field>
     </record>
     <menuitem name="Abscence_u" id="abscenceu_main_menu"/>
     <menuitem name="Attendance" id="abscence_attendance_menu" parent="abscenceu_main_menu" action="action_attendance_form"/>
@@ -18,9 +18,8 @@
                 <field name="libelle"/>
                 <field name="current_date"/>
                     <field name="professor_id"/>
-                   <field name="subject_ids"/>
-                   <field name="etudiants_id"/>
-
+                    <field name="subject_ids" widget="many2many_tags" options="{'no_create': True}"  />
+                    <field name="etudiants_ids" widget="many2many_tags" options="{'no_create': True}" />
                 </group>
             </form>
         </field>
@@ -33,9 +32,51 @@
             <tree>
                 <field name="libelle"/>
                 <field name="professor_id"/>
-                <field name="subject_ids"  widget="many2many_tags"/> 
-                <field name="etudiants_id" widget="many2many_tags"/>
+                <field name="subject_ids" widget="many2many_tags" />
+                <field name="etudiants_ids" widget="many2many_tags" />
             </tree>
+        </field>
+    </record>
+
+    <record id="view_attendance_search" model="ir.ui.view">
+        <field name="name">attendance.search</field>
+        <field name="model">abscence.attendance</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="libelle"/>
+                <field name="professor_id"/>
+                <field name="subject_ids"  />
+                <field name="etudiants_ids"/>
+                <group expand="0" string="Group By" >
+                        <filter string="Professeur" name="group_by_professeur" context="{'group_by': 'professor_id'}"/>
+                        <!-- <filter string="Matiere" name="group_by_matiere" context="{'group_by': 'subject_ids'}"/> -->
+                    </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="view_attendance_kanban" model="ir.ui.view">
+        <field name="name">attendance.kanban</field>
+        <field name="model">abscence.attendance</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click">
+                            <div class="oe_kanban_card">
+                                <div class="oe_kanban_card_header">
+                                    <field name="libelle"/>
+                                </div>
+                                <div class="oe_kanban_card_content">
+                                    <field name="professor_id" />
+                                    <field name="subject_ids" widget="many2many_tags"/>
+                                    <field name="etudiants_ids" widget="many2many_tags"/>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
         </field>
     </record>
 
