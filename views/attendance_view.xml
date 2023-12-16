@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-
-    <!-- Define the action to open the form view -->
-    <record id="action_attendance_form" model="ir.actions.act_window">
+<record id="action_attendance_form" model="ir.actions.act_window">
         <field name="name">Attendance</field>
         <field name="res_model">abscence.attendance</field>
         <field name="view_mode">tree,form</field>
     </record>
+    <menuitem name="Abscence_u" id="abscenceu_main_menu"/>
+    <menuitem name="Attendance" id="abscence_attendance_menu" parent="abscenceu_main_menu" action="action_attendance_form"/>
 
-    <menuitem name="Attendance" id="abscence_attendance_menu" parent="abscence_main_menu" action="action_attendance_form"/>
+    <!-- Define the action to open the form view -->
+    
+
    
     <!-- Define the form view -->
     <record id="view_attendance_form" model="ir.ui.view">
@@ -19,7 +21,7 @@
                 <group>
                 <field name="libelle"/>
                     <field name="professor_id"/>
-                    <field name="subject_ids" widget="many2many_tags" />
+                    <field name="subject_ids" widget="many2many_tags" options="{'no_create': True}"  />
                 </group>
             </form>
         </field>
@@ -32,7 +34,7 @@
             <tree>
                 <field name="libelle"/>
                 <field name="professor_id"/>
-                <field name="subject_ids" widget="many2many_tags"/>
+                <field name="subject_ids" widget="many2many_tags" />
             </tree>
         </field>
     </record>

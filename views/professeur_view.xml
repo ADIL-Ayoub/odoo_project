@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-
-        <menuitem name="Abscence" id="abscence_main_menu"/>
-        <menuitem name="Professeur" id="abscence_professeur_menu" parent="abscence_main_menu" action="action_professeur_list"/>
         <record id="action_professeur_list" model="ir.actions.act_window">
             <field name="name">Professeurs</field>
             <field name="res_model">abscence.professeur</field>
             <field name="view_mode">tree,form,kanban</field>
         </record>
+
+        <menuitem name="Abscence_u" id="abscenceu_main_menu"/>
+        <menuitem name="Professeur" id="abscence_professeur_menu" parent="abscenceu_main_menu" action="action_professeur_list"/>
+        
         <!-- Form View -->
         <record id="view_professeur_form" model="ir.ui.view">
             <field name="name">professeur.form</field>
