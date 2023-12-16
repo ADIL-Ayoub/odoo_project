@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <!-- <menuitem name="Abscence" id="abscence_main_menu"/> -->
-    <menuitem name="Etudiant" id="abscence_etudiant_menu" parent="abscence_main_menu" action="action_etudiant_list"/>
-        <!-- Action for List View -->
+
+     <!-- Action for List View -->
     <record id="action_etudiant_list" model="ir.actions.act_window">
         <field name="name">Etudiants</field>
         <field name="res_model">abscence.etudiant</field>
         <field name="view_mode">tree,form,kanban</field>
     </record>
+
+    <menuitem name="Abscence" id="abscence_main_menu"/>
+    <menuitem name="Etudiant" id="abscence_etudiant_menu" parent="abscence_main_menu" action="action_etudiant_list"/>
+   
     <!-- Form View -->
     <record id="view_etudiant_form" model="ir.ui.view">
         <field name="name">etudiant.form</field>

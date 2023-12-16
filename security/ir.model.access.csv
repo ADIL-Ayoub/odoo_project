@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_absence_professeur,access.absence.professeur,model_abscence_professeur,,1,1,1,1
+access_absence_etudiant,access.absence.etudiant,model_abscence_etudiant,,1,1,1,1
+access_absence_filiere,access.absence.filiere,model_abscence_filiere,,1,1,1,1
+access_absence_matiere,access.absence.matiere,model_abscence_matiere,,1,1,1,1
+access_absence_attendance,access.absence.attendance,model_abscence_attendance,,1,1,1,1
