@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Define the action to open the form view -->
+    <record id="action_attendance_form" model="ir.actions.act_window">
+        <field name="name">Attendance</field>
+        <field name="res_model">abscence.attendance</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem name="Attendance" id="abscence_attendance_menu" parent="abscence_main_menu" action="action_attendance_form"/>
+   
+    <!-- Define the form view -->
+    <record id="view_attendance_form" model="ir.ui.view">
+        <field name="name">attendance.form</field>
+        <field name="model">abscence.attendance</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                <field name="libelle"/>
+                    <field name="professor_id"/>
+                    <field name="subject_ids" widget="many2many_tags" />
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_attendance_tree" model="ir.ui.view">
+        <field name="name">attendance.tree</field>
+        <field name="model">abscence.attendance</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="libelle"/>
+                <field name="professor_id"/>
+                <field name="subject_ids" widget="many2many_tags"/>
+            </tree>
+        </field>
+    </record>
+
+
+</odoo>
