@@ -3,6 +3,7 @@ import csv
 import base64
 from io import StringIO
 
+
 class Etudiant(models.Model):
     _name = 'abscence.etudiant'
     _description = 'Classe pour gérer les étudiants'
@@ -15,24 +16,14 @@ class Etudiant(models.Model):
     tele = fields.Char(string='Téléphone')
     cin = fields.Char(string='CIN', required=True)
     filiere_id = fields.Many2one('abscence.filiere', string='Filière')
-    # attendances = fields.Many2many(
-    #     'abscence.attendance', 'etudiant_ids', string='Attendance')
-
-    # temp = fields.Char(string='temp',
-    #                    compute='_compute_temp', store=True)
-
-    # matieres = fields.Many2many('abscence.matiere', string='Matieres')
-
-    # A computed field combining nom and prenom for _rec_name
+    current_date = fields.Date(
+        string="Date de création", default=fields.Date.today)
     nom_prenom = fields.Char(string='Nom et Prénom',
                              compute='_compute_nom_prenom', store=True)
+    current_date = fields.Date(
+        string="Date de création", default=fields.Date.today)
 
     @api.depends('nom', 'prenom')
     def _compute_nom_prenom(self):
         for record in self:
             record.nom_prenom = f"{record.nom} {record.prenom}"
-
-    # @api.depends('nom', 'prenom')
-    # def _compute_temp(self):
-    #     for record in self:
-    #         record.temp = f"{self.env.user.email}"

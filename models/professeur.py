@@ -16,6 +16,8 @@ class Professeur(models.Model):
     cin = fields.Char(string='CIN', required=True)
     matieres = fields.One2many(
         'abscence.matiere', 'professeur_id', string='Matieres')
+    current_date = fields.Date(
+        string="Date de création", default=fields.Date.today)
 
     @api.depends('nom', 'prenom')
     def _compute_nom_prenom(self):

@@ -7,9 +7,7 @@
 </record>
     <menuitem name="Abscence_u" id="abscenceu_main_menu"/> 
     <menuitem name="Etudiant" id="abscence_etudiant_menu" parent="abscenceu_main_menu" action="action_etudiant_list" groups="group_Admin"/>
-        <!-- Action for List View -->
-    
-    <!-- Form View -->
+
     <record id="view_etudiant_form" model="ir.ui.view">
         <field name="name">etudiant.form</field>
         <field name="model">abscence.etudiant</field>
@@ -20,18 +18,15 @@
                         <field name="nom"/>
                         <field name="prenom"/>
                         <field name="email"/>
-                        <field name="password"/>
                         <field name="tele"/>
                         <field name="cin"/>
                         <field name="filiere_id"/>
-                        <!-- <field name="matieres" widget="many2many_tags"/> -->
                     </group>
                 </sheet>
             </form>
         </field>
     </record>
 
-    <!-- List View -->
     <record id="view_etudiant_tree" model="ir.ui.view">
         <field name="name">etudiant.tree</field>
         <field name="model">abscence.etudiant</field>
@@ -43,9 +38,6 @@
                 <field name="tele"/>
                 <field name="cin"/>
                 <field name="filiere_id"/>
-                <!-- <field name="temp"/> -->
-                
-                <!-- <field name="matieres" widget="many2many_tags"/> -->
                </tree>
         </field>
     </record>
@@ -66,7 +58,7 @@
             </search>
         </field>
     </record>
-    <!-- Kanban View -->
+
     <record id="view_etudiant_kanban" model="ir.ui.view">
         <field name="name">etudiant.kanban</field>
         <field name="model">abscence.etudiant</field>
@@ -85,7 +77,6 @@
                                     <field name="tele"/>
                                     <field name="cin"/>
                                     <field name="filiere_id"/>
-                                    <!-- <field name="matieres" widget="many2many_tags"/> -->
                                 </div>
                             </div>
                         </div>

@@ -8,14 +8,7 @@
         </record>
     <menuitem name="Abscence_u" id="abscenceu_main_menu"/>
     <menuitem name="Matiere" id="abscence_matiere_menu" parent="abscenceu_main_menu" action="action_matiere_list" groups="group_Admin"/>
-        
-        
 
-        <!-- <menuitem name="Abscence" id="abscence_main_menu"/> -->
-        <!-- Action for List View -->
-        
-
-        <!-- Form View -->
         <record id="view_matiere_form" model="ir.ui.view">
             <field name="name">matiere.form</field>
             <field name="model">abscence.matiere</field>
@@ -24,7 +17,6 @@
                     <sheet>
                         <group>
                             <field name="libelle"/>
-                            <!-- <field name="professeur_id"/> -->
                             <field name="filiere_id"/>
                         </group>
                     </sheet>
@@ -32,7 +24,6 @@
             </field>
         </record>
 
-        <!-- List View -->
         <record id="view_matiere_tree" model="ir.ui.view">
             <field name="name">matiere.tree</field>
             <field name="model">abscence.matiere</field>
@@ -61,7 +52,6 @@
             </field>
         </record>
 
-        <!-- Kanban View -->
         <record id="view_matiere_kanban" model="ir.ui.view">
             <field name="name">matiere.kanban</field>
             <field name="model">abscence.matiere</field>

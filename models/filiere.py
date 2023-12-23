@@ -11,3 +11,5 @@ class Filiere(models.Model):
         'abscence.matiere', 'filiere_id', string='Matieres')
     etudiants = fields.One2many(
         'abscence.etudiant', 'filiere_id', string='Etudiants')
+    current_date = fields.Date(
+        string="Date de création", default=fields.Date.today)
