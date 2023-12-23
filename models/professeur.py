@@ -11,7 +11,6 @@ class Professeur(models.Model):
     nom_prenom = fields.Char(string='Nom et Prénom',
                              compute='_compute_nom_prenom', store=True)
     email = fields.Char(string='Email', required=True)
-    password = fields.Char(string='Mot de passe', required=True)
     tele = fields.Char(string='Téléphone')
     cin = fields.Char(string='CIN', required=True)
     matieres = fields.One2many(

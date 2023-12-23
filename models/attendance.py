@@ -3,7 +3,7 @@ from odoo import api, models, fields
 
 class Attendance(models.Model):
     _name = 'abscence.attendance'
-    _description = 'Attendance'
+    _description = 'presence'
     _rec_name = 'libelle'
 
     libelle = fields.Char(string='Libelle', required=True)
@@ -18,10 +18,10 @@ class Attendance(models.Model):
         'abscence.etudiant', string='Etudiants', store=True
     )
     subject_names = fields.Char(
-        string='Matiere', compute='_compute_subject_names', store=True)
+        string='Matiere', compute='_compute_libelle_matieres', store=True)
 
     @api.depends('subject_ids')
-    def _compute_subject_names(self):
+    def _compute_libelle_matieres(self):
         for record in self:
             record.subject_names = ', '.join(
                 record.subject_ids.mapped('libelle'))
