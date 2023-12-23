@@ -5,7 +5,7 @@
     <record id="action_filiere_list" model="ir.actions.act_window">
         <field name="name">Filieres</field>
         <field name="res_model">abscence.filiere</field>
-        <field name="view_mode">tree,form,kanban</field>
+        <field name="view_mode">tree,form,kanban,calendar</field>
     </record>
     <menuitem name="Abscence_u" id="abscenceu_main_menu"/>
     <menuitem name="Filiere" id="abscence_filiere_menu" parent="abscenceu_main_menu" action="action_filiere_list" groups="group_Admin"/>
@@ -70,5 +70,19 @@
         </field>
     </record>
 
+
+
+    <record id="view_filiere_calendar" model="ir.ui.view">
+        <field name="name">filiere.calendar.view</field>
+        <field name="model">abscence.filiere</field>
+        <field name="arch" type="xml">
+            <calendar string="filiere Calendar" date_start="current_date" date_stop="current_date">
+                <field name="libelle"/>
+                <field name="matieres"/>
+                <field name="etudiants"/>
+                
+            </calendar>
+        </field>
+    </record>
 
 </odoo>

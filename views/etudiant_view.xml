@@ -3,7 +3,7 @@
 <record id="action_etudiant_list" model="ir.actions.act_window">
         <field name="name">Etudiants</field>
         <field name="res_model">abscence.etudiant</field>
-        <field name="view_mode">tree,form,kanban</field>
+        <field name="view_mode">tree,form,kanban,calendar</field>
 </record>
     <menuitem name="Abscence_u" id="abscenceu_main_menu"/> 
     <menuitem name="Etudiant" id="abscence_etudiant_menu" parent="abscenceu_main_menu" action="action_etudiant_list" groups="group_Admin"/>
@@ -83,6 +83,19 @@
                     </t>
                 </templates>
             </kanban>
+        </field>
+    </record>
+
+    <record id="view_etudiant_calendar" model="ir.ui.view">
+        <field name="name">etudiant.calendar.view</field>
+        <field name="model">abscence.etudiant</field>
+        <field name="arch" type="xml">
+            <calendar string="Etudiant Calendar" date_start="current_date" date_stop="current_date">
+                <field name="nom_prenom"/>
+                <field name="filiere_id"/>
+                <field name="cin"/>
+                <field name="tele"/>
+            </calendar>
         </field>
     </record>
 

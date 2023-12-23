@@ -4,7 +4,7 @@
     <record id="action_matiere_list" model="ir.actions.act_window">
             <field name="name">Matieres</field>
             <field name="res_model">abscence.matiere</field>
-            <field name="view_mode">tree,form,kanban</field>
+            <field name="view_mode">tree,form,kanban,calendar</field>
         </record>
     <menuitem name="Abscence_u" id="abscenceu_main_menu"/>
     <menuitem name="Matiere" id="abscence_matiere_menu" parent="abscenceu_main_menu" action="action_matiere_list" groups="group_Admin"/>
@@ -76,6 +76,20 @@
             </field>
         </record>
 
+
+
+    <record id="view_matiere_calendar" model="ir.ui.view">
+        <field name="name">matiere.calendar.view</field>
+        <field name="model">abscence.matiere</field>
+        <field name="arch" type="xml">
+            <calendar string="matiere Calendar" date_start="current_date" date_stop="current_date">
+                <field name="libelle"/>
+                <field name="professeur_id"/>
+                <field name="filiere_id"/>
+              
+            </calendar>
+        </field>
+    </record>
 
 
     </data>
