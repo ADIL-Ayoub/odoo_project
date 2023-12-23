@@ -3,7 +3,7 @@
         <record id="action_professeur_list" model="ir.actions.act_window">
             <field name="name">Professeurs</field>
             <field name="res_model">abscence.professeur</field>
-            <field name="view_mode">tree,form,kanban</field>
+            <field name="view_mode">tree,form,kanban,calendar</field>
         </record>
 
         <menuitem name="Abscence_u" id="abscenceu_main_menu"/>
@@ -86,5 +86,19 @@
                 </kanban>
             </field>
         </record>
+
+  <record id="view_professeur_calendar" model="ir.ui.view">
+        <field name="name">professeur.calendar.view</field>
+        <field name="model">abscence.professeur</field>
+        <field name="arch" type="xml">
+            <calendar string="professeur Calendar" date_start="current_date" date_stop="current_date">
+                <field name="nom_prenom"/>
+                <field name="cin"/>
+                <field name="matieres"/>
+              
+            </calendar>
+        </field>
+    </record>
+
 
 </odoo>

@@ -1,7 +1,4 @@
 from odoo import api, models, fields
-import csv
-import base64
-from io import StringIO
 
 
 class Etudiant(models.Model):
@@ -12,7 +9,6 @@ class Etudiant(models.Model):
     nom = fields.Char(string='Nom', required=True)
     prenom = fields.Char(string='Prénom', required=True)
     email = fields.Char(string='Email', required=True)
-    password = fields.Char(string='Mot de passe', required=True)
     tele = fields.Char(string='Téléphone')
     cin = fields.Char(string='CIN', required=True)
     filiere_id = fields.Many2one('abscence.filiere', string='Filière')
