@@ -18,7 +18,7 @@ class Attendance(models.Model):
         'abscence.etudiant', string='Etudiants', store=True
     )
     subject_names = fields.Char(
-        string='Subject Names', compute='_compute_subject_names', store=True)
+        string='Matiere', compute='_compute_subject_names', store=True)
 
     @api.depends('subject_ids')
     def _compute_subject_names(self):
@@ -27,7 +27,7 @@ class Attendance(models.Model):
                 record.subject_ids.mapped('libelle'))
 
     cpt_etudiants_par_matiere = fields.Integer(
-        string='Number of Students per Subject', compute='_compute_etudiants_par_matiere', store=True)
+        string='Nombre des etudiants par matiere', compute='_compute_etudiants_par_matiere', store=True)
 
     @api.depends('etudiants_ids')
     def _compute_etudiants_par_matiere(self):
