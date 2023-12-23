@@ -3,7 +3,7 @@
 <record id="action_attendance_form" model="ir.actions.act_window">
         <field name="name">Attendance</field>
         <field name="res_model">abscence.attendance</field>
-        <field name="view_mode">tree,form,kanban</field>
+        <field name="view_mode">tree,form,kanban,calendar,graph</field>
     </record>
     <menuitem name="Abscence_u" id="abscenceu_main_menu"/>
     <menuitem name="Attendance" id="abscence_attendance_menu" parent="abscenceu_main_menu" action="action_attendance_form"/>
@@ -17,7 +17,7 @@
                 <group>
                 <field name="libelle"/>
                 <field name="current_date"/>
-                    <field name="professor_id"/>
+                    <field name="professor_id" options="{'no_create': True}"/>
                     <field name="subject_ids" widget="many2many_tags" options="{'no_create': True}"  />
                     <field name="etudiants_ids" widget="many2many_tags" options="{'no_create': True}" />
                 </group>
@@ -34,6 +34,7 @@
                 <field name="professor_id"/>
                 <field name="subject_ids" widget="many2many_tags" />
                 <field name="etudiants_ids" widget="many2many_tags" />
+                <field name="current_date"/>
             </tree>
         </field>
     </record>
@@ -49,8 +50,8 @@
                 <field name="etudiants_ids"/>
                 <group expand="0" string="Group By" >
                         <filter string="Professeur" name="group_by_professeur" context="{'group_by': 'professor_id'}"/>
-                        <!-- <filter string="Matiere" name="group_by_matiere" context="{'group_by': 'subject_ids'}"/> -->
-                    </group>
+                         <filter string="Matiere" name="group_by_matiere" context="{'group_by': 'subject_names'}"/> 
+                </group>
             </search>
         </field>
     </record>
@@ -71,6 +72,7 @@
                                     <field name="professor_id" />
                                     <field name="subject_ids" widget="many2many_tags"/>
                                     <field name="etudiants_ids" widget="many2many_tags"/>
+                                    <field name="current_date"/>
                                 </div>
                             </div>
                         </div>
@@ -79,6 +81,32 @@
             </kanban>
         </field>
     </record>
+
+    <record id="view_attendance_calendar" model="ir.ui.view">
+    <field name="name">attendance.calendar.view</field>
+    <field name="model">abscence.attendance</field>
+    <field name="arch" type="xml">
+        <calendar string="Attendance Calendar" date_start="current_date" date_stop="current_date">
+            <field name="libelle"/>
+            <field name="professor_id"/>
+            <field name="etudiants_ids"/>
+            <field name="subject_ids"/>
+        </calendar>
+    </field>
+</record>
+
+<record id="view_attendance_graph" model="ir.ui.view">
+    <field name="name">attendance.graph.view</field>
+    <field name="model">abscence.attendance</field>
+    <field name="arch" type="xml">
+        <graph string="Attendance Graph">
+            <!-- <field name="professor_id" type="row"/>
+            <field name="etudiants_ids" type="measure" operator="count" string="Number of Students"/> -->
+            <field name="subject_names" type="row"/>
+            <field name="etudiants_count_per_subject" type="measure" operator="count" string="Number of Students"/>
+        </graph>
+    </field>
+</record>
 
 
 </odoo>

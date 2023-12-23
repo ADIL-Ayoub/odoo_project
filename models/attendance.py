@@ -7,17 +7,34 @@ class Attendance(models.Model):
     _rec_name = 'libelle'
 
     libelle = fields.Char(string='Libelle', required=True)
-    current_date = fields.Date(string="aujourd'hui", default=fields.Date.today)
+    current_date = fields.Date(
+        string="Date de création", default=fields.Date.today)
     professor_id = fields.Many2one(
         'abscence.professeur', string='Professeur')
     subject_ids = fields.Many2many(
-        'abscence.matiere', string='Matieres', store=True, group_operator="count"
+        'abscence.matiere', string='Matieres', store=True
         # , compute="_compute_subjects"
     )
     etudiants_ids = fields.Many2many(
         'abscence.etudiant', string='Etudiants', store=True
         # , compute="_compute_etudiants"
     )
+    subject_names = fields.Char(
+        string='Subject Names', compute='_compute_subject_names', store=True)
+
+    @api.depends('subject_ids')
+    def _compute_subject_names(self):
+        for record in self:
+            record.subject_names = ', '.join(
+                record.subject_ids.mapped('libelle'))
+
+    etudiants_count_per_subject = fields.Integer(
+        string='Number of Students per Subject', compute='_compute_etudiants_count_per_subject', store=True)
+
+    @api.depends('etudiants_ids')
+    def _compute_etudiants_count_per_subject(self):
+        for record in self:
+            record.etudiants_count_per_subject = len(record.etudiants_ids)
 
     @ api.onchange('professor_id')
     def onchange_professor_id(self):
