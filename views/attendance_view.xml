@@ -50,6 +50,8 @@
                 <group expand="0" string="Group By" >
                         <filter string="Professeur" name="group_by_professeur" context="{'group_by': 'professor_id'}"/>
                          <filter string="Matiere" name="group_by_matiere" context="{'group_by': 'subject_names'}"/> 
+                         <filter string="Date de création" name="group_by_date" context="{'group_by': 'current_date'}"/>
+                         <filter string="Libelle" name="group_by_libelle" context="{'group_by': 'libelle'}"/>
                 </group>
             </search>
         </field>
@@ -101,6 +103,7 @@
         <graph string="Attendance Graph">
            <field name="libelle" type="row"/>
            <field name="professor_id" type="row"/>
+           <field name="current_date" type="row"/>
             <field name="cpt_etudiants_par_matiere" type="measure" operator="count" string="Nombre des etudiants"/>
         </graph>
     </field>
