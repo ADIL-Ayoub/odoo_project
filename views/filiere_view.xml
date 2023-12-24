@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-        
-
+    
     <record id="action_filiere_list" model="ir.actions.act_window">
         <field name="name">Filieres</field>
         <field name="res_model">abscence.filiere</field>

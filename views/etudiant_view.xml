@@ -53,8 +53,8 @@
                 <field name="cin"/>
                 <field name="filiere_id"/>
                 <group expand="0" string="Group By" >
-                        <filter string="Filiere" name="group_by_filiere" context="{'group_by': 'filiere_id'}"/>
-                    </group>
+                    <filter string="Filiere" name="group_by_filiere" context="{'group_by': 'filiere_id'}"/>
+                </group>
             </search>
         </field>
     </record>

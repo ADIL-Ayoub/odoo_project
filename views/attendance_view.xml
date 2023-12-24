@@ -99,7 +99,8 @@
     <field name="model">abscence.attendance</field>
     <field name="arch" type="xml">
         <graph string="Attendance Graph">
-           <field name="subject_names" type="row"/>
+           <field name="libelle" type="row"/>
+           <field name="professor_id" type="row"/>
             <field name="cpt_etudiants_par_matiere" type="measure" operator="count" string="Nombre des etudiants"/>
         </graph>
     </field>

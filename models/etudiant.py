@@ -12,8 +12,6 @@ class Etudiant(models.Model):
     tele = fields.Char(string='Téléphone')
     cin = fields.Char(string='CIN', required=True)
     filiere_id = fields.Many2one('abscence.filiere', string='Filière')
-    current_date = fields.Date(
-        string="Date de création", default=fields.Date.today)
     nom_prenom = fields.Char(string='Nom et Prénom',
                              compute='_compute_nom_prenom', store=True)
     current_date = fields.Date(

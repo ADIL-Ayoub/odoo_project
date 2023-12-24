@@ -39,7 +39,6 @@
                     <field name="tele"/>
                     <field name="cin"/>
                     <field name="matieres" widget="many2many_tags"/>
-
                 </tree>
             </field>
         </record>
@@ -55,8 +54,6 @@
                     <field name="tele"/>
                     <field name="cin"/>
                     <field name="matieres"/>
-                    
-
                 </search>
             </field>
         </record>
@@ -87,18 +84,17 @@
             </field>
         </record>
 
-  <record id="view_professeur_calendar" model="ir.ui.view">
-        <field name="name">professeur.calendar.view</field>
-        <field name="model">abscence.professeur</field>
-        <field name="arch" type="xml">
-            <calendar string="professeur Calendar" date_start="current_date" date_stop="current_date">
-                <field name="nom_prenom"/>
-                <field name="cin"/>
-                <field name="matieres"/>
-              
-            </calendar>
-        </field>
-    </record>
+        <record id="view_professeur_calendar" model="ir.ui.view">
+            <field name="name">professeur.calendar.view</field>
+            <field name="model">abscence.professeur</field>
+            <field name="arch" type="xml">
+                <calendar string="professeur Calendar" date_start="current_date" date_stop="current_date">
+                    <field name="nom_prenom"/>
+                    <field name="cin"/>
+                    <field name="matieres"/>    
+                </calendar>
+            </field>
+        </record>
 
 
 </odoo>
