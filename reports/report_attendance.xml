@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <report
+            id="report_attendance_card"
+            string="Attendance Report"
+            model="abscence.attendance"
+            report_type="qweb-pdf"
+            file="abscence.report_attendance"
+            name="abscence.report_attendance"
+        />
+
+
+
+</odoo>

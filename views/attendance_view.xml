@@ -102,8 +102,8 @@
     <field name="arch" type="xml">
         <graph string="Attendance Graph">
            <field name="libelle" type="row"/>
-           <field name="professor_id" type="row"/>
-           <field name="current_date" type="row"/>
+           <!-- <field name="professor_id" type="row"/> -->
+           <!-- <field name="current_date" type="row"/> -->
             <field name="cpt_etudiants_par_matiere" type="measure" operator="count" string="Nombre des etudiants"/>
         </graph>
     </field>

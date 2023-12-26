@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_attendance_cards">
+        <t t-call="web.basic_layout">
+            <div class="text-center">
+                    <img src="/abscence/static/logo.png" class="img-fluid" width="100px" height="100px" />
+            </div>
+            <div class="d-flex justify-content-center">
+                
+             
+                    <h3 > 
+
+                            Université Abdelmalek Essaadi 
+                            Ecole Nationale des Sciences Appliquées 
+                                d'Al Hoceima
+                    </h3>
+               
+            </div>
+            <div class="page text-center border border-2 ">
+               
+                <t t-foreach="docs" t-as="doc">
+                    <div class="col-12">
+                        <h3> <strong> Rapport de Présence   </strong></h3>
+                        <h4> Libelle : <t t-esc="doc.libelle"/></h4>
+                        <h4> Professur :<t t-esc="doc.professor_id.nom_prenom"/></h4>
+                        <h4> Matière  :<t t-esc="doc.subject_ids.libelle"/></h4>
+                        <h4> Filière  :<t t-esc="doc.subject_ids.filiere_id.libelle"/></h4>
+                        <h4> Date  :<t t-esc="doc.current_date"/></h4>
+                    </div>
+                    <table class="table col-12 border">
+                        <thead>
+                            <tr>
+                                <th>CIN</th>
+                                <th>Nom</th>
+                                <th>Prenom</th>
+                                <th>Present</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                            <t t-foreach="doc.subject_ids.filiere_id.etudiants" t-as="etudiant">
+                                <tr>
+                                    <td><t t-esc="etudiant.cin"/></td>
+                                    <td><t t-esc="etudiant.nom"/></td>
+                                    <td><t t-esc="etudiant.prenom"/></td>
+                                    
+                                    <t t-if="etudiant in doc.etudiants_ids">
+                                        <td class="text-success">   Present </td>
+                                    </t>
+                                    <t t-else="">
+                                        <td class="text-danger">   Absent </td>
+                                    </t>
+                                    
+                                </tr>
+                            </t>
+                            
+                        </tbody>
+                    </table>
+                </t>
+
+            </div>
+            <div class="m-4">
+                <h5> <strong> Signature :</strong></h5>
+            </div>
+        </t>
+    </template>
+
+    <template id="report_attendance">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc"> 
+                <t t-call="abscence.report_attendance_cards" />
+            </t>
+        </t>
+    </template>
+</odoo>
